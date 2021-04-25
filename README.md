@@ -2,6 +2,7 @@
 Online toplantı veya dersler için otomatik link açan saatli bomba misali ders programı
 
 Kurulum:
+
 *Ders linki txt nin içine belirtilen düzen eşliğinde derslerinizi ve linklerinizi girin
 
 *Program_taslak.xlsx e girmeniz gerekmekte, şayet bilgisiyarınızda excel yoksa internette online edit yapabileceğiniz siteler mevcut ordan gerekli düzenlemeleri yapabilirsiniz. eğer bunu başardıysanız sırada programınızı excel in içinde örneklere dikakt ederek giriniz. Kabaca anlatıcak olursam sol tarafa dayalı günler var, her günün yanında 2 tane bölüm var üstteki bölüme ders saatini alt bölümede dersin ismini giriniz(dosyaya girdiğinizde dediklerim daha anlamlı olacaktır:D)
