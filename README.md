@@ -12,10 +12,13 @@ Kurulum:
 *Zoom ayarlarından mikrofonun otomatik kanala katılmasını falan ayarlayın kameranızı kapatın (işinizi size öğreticek değilim sadece hatırlatıyorum) ki taklaya gelmeyin.
 
 ÖNEMLİ NOT:
+
 zoom_link.txt deki ders adları ile excel programındaki ders adları aynı olması gerektiğini umarım söylemem gerekmez(büyük harflere duyarlı). Burda sihir yapmıyoruz elinizdeki verileri kullanıyorum saçmalamayınız nütfen.
 
 UYARI:
-*Excel dosyası çok hassas, eğer dosyayla fazla oynaşırsanız column sayısı programım tarafından yanlış hesaplanıcak ve büyük ihtimal program hata vericektir. O yüzden excel dosyasına yumuşak davranmanızı tavsiye ederim.(benim bu mesela yüzünden burnum biraz sürttü programı kodlama aşamasında)
+
+*Excel dosyası çok hassas, eğer dosyayla fazla oynaşırsanız (mesela derslerinizi ve saatlerinizi güzel güzel girerken yanlışlıkla hiç doldurmıyacağınız bir column a yazı yazdınız tıkladınız ve bunun sonucundada programın hata verdiğini gözlemlediniz. Çözüm önerim her ne kadar yanlışlıkla yazı yazdığınız yeri silmeye çalışmış olsanızda bunun program tarafından algılanması için column a sağ tık-> sil yapmanız gerekmekte ancak böyle excele orda bir veri olmadığını ifade edebilirsiniz bu dediğimi unutmayın) column sayısı programım tarafından yanlış hesaplanıcak ve büyük ihtimal program hata vericektir. O yüzden excel dosyasına yumuşak davranmanızı tavsiye ederim.(benim bu mesela yüzünden burnum biraz sürttü programı kodlama aşamasında)
+
 *ders_link.txt ye ders isimlerini ve linkleri girdikten sonra en sonda boş satır kalmamasına dkkat edin, python oralarıda satırmış gibi okuyor ki buda tahmin edersiniz ki bizim hiç istemiyeceğiz bir şey.
 
 KAPANIŞ:
