@@ -22,7 +22,8 @@ UYARI:
 *ders_link.txt ye ders isimlerini ve linkleri girdikten sonra en sonda boş satır kalmamasına dikkat edin, python oralarıda satırmış gibi okuyor ki buda tahmin edersiniz ki bizim hiç istemiyeceğiz bir şey.
 
 EK NOT:
+
 Programı direk gitten klonladığınız gibi test etmek için yükledikten sonra py dosyasını cmd üzerinden çalıştırın size excel dosyasını soracak program_ornek.xlsx yazın sonra kasıtlı bekleme süresinede bir şeyler sallayın ve programın nasıl bir çıktı verdiğini falan görün sonra kafanıza göre tkaılın kendi progrmaınızı ordaki exce progrmına benzicek şekilde uyarlayın falan
 
-KAPANIŞ:
+
 Sağlıcakla kalın hepinize selam olsun, umarım işinize yarar...
