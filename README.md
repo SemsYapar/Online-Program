@@ -19,7 +19,10 @@ UYARI:
 
 *Excel dosyası çok hassas, eğer dosyayla fazla oynaşırsanız (mesela derslerinizi ve saatlerinizi güzel güzel girerken yanlışlıkla hiç doldurmıyacağınız bir column a yazı yazdınız tıkladınız ve bunun sonucundada programın hata verdiğini gözlemlediniz. Çözüm önerim her ne kadar yanlışlıkla yazı yazdığınız yeri silmeye çalışmış olsanızda bunun program tarafından algılanması için column a sağ tık-> sil yapmanız gerekmekte ancak böyle excele orda bir veri olmadığını ifade edebilirsiniz bu dediğimi unutmayın) column sayısı programım tarafından yanlış hesaplanıcak ve büyük ihtimal program hata vericektir. O yüzden excel dosyasına yumuşak davranmanızı tavsiye ederim.(benim bu mesela yüzünden burnum biraz sürttü programı kodlama aşamasında)
 
-*ders_link.txt ye ders isimlerini ve linkleri girdikten sonra en sonda boş satır kalmamasına dkkat edin, python oralarıda satırmış gibi okuyor ki buda tahmin edersiniz ki bizim hiç istemiyeceğiz bir şey.
+*ders_link.txt ye ders isimlerini ve linkleri girdikten sonra en sonda boş satır kalmamasına dikkat edin, python oralarıda satırmış gibi okuyor ki buda tahmin edersiniz ki bizim hiç istemiyeceğiz bir şey.
+
+EK NOT:
+Programı direk gitten klonladığınız gibi test etmek için yükledikten sonra py dosyasını cmd üzerinden çalıştırın size excel dosyasını soracak program_ornek.xlsx yazın sonra kasıtlı bekleme süresinede bir şeyler sallayın ve programın nasıl bir çıktı verdiğini falan görün sonra kafanıza göre tkaılın kendi progrmaınızı ordaki exce progrmına benzicek şekilde uyarlayın falan
 
 KAPANIŞ:
 Sağlıcakla kalın hepinize selam olsun, umarım işinize yarar...
