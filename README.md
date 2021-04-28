@@ -3,6 +3,8 @@ Online toplantı veya dersler için otomatik link açan saatli bomba misali ders
 
 Kurulum:
 
+*openpyxl kütüphanesini indrmek için cmd ye python openpyxl yazın excel dosyalarını okumak için lazım bu.
+
 *Zoom toplantı linklerinizi ve ders isimlerinizi ders_link.txt nin içindeki örnek düzende olduğu gibi Ders\nLink(Ders 'Enter' Link) giriniz.
 
 *Program_taslak.xlsx e girmeniz gerekmekte, şayet bilgisiyarınızda excel yoksa internette online edit yapabileceğiniz siteler mevcut ordan gerekli düzenlemeleri yapabilirsiniz. eğer bunu başardıysanız ders programınızı excel in içinde örneklerden feyz alarak giriniz. Kabaca anlatıcak olursam ilk columnda günler var, her günün yanında 2 tane bölüm var üstteki bölüme ders saatini alt bölümede dersin ismini girmeniz gerekli.(excel dosyasına girdiğinizde dediklerim daha anlamlı olacaktır)
@@ -21,7 +23,7 @@ UYARI:
 
 *ders_link.txt ye ders isimlerini ve linkleri girdikten sonra en sonda boş satır kalmamasına dikkat edin, python oralarıda satırmış gibi okuyor ki buda tahmin edersiniz ki bizim hiç istemiyeceğiz bir şey.
 
-EK NOT:
+Bu Arada:
 
 Programı direk gitten klonladığınız gibi test etmek için yükledikten sonra py dosyasını cmd üzerinden çalıştırın size excel dosyasını soracak program_ornek.xlsx yazın sonra kasıtlı bekleme süresinede bir şeyler sallayın ve programın nasıl bir çıktı verdiğini falan görün sonra kafanıza göre tkaılın kendi progrmaınızı ordaki exce progrmına benzicek şekilde uyarlayın falan
 
