@@ -1,12 +1,6 @@
 # Online-Program
 Online toplantı veya dersler için otomatik link açan saatli bomba misali ders programı
 
-
-Selam, online derslere otomatik girmeye yönelik bir program geliştirdim. Programı sizin beğeninize sunuyorum ve incelemenizi çok ama çok istiyorum her bir yerine bakın en küçük bir mantık hatası yada geliştirmeme katkı sağlıyacak bir nokta bulduğunuz takdirde değerli yorumlarızda bunu belirtin nütfen. Buyrun program ve kullanımı:
-https://github.com/SemsYapar/Online-Program
-
-
-
 Kurulum:
 
 
