@@ -19,28 +19,36 @@ time_row_num = days_and_rows[today]
 lesson_row_num = time_row_num + 1
 
 with open("ders_link.txt", "r", encoding="utf-8") as f:
-    it = iter(f.readlines())
-    lessons_and_links = {x.rstrip("\n"):next(it).rstrip("\n") for x in it}
-try:
-    time_row = [ws.cell(time_row_num, i).value.strftime("%H:%M") for i in range(2, ws.max_column + 1)]
-    lesson_row = [ws.cell(lesson_row_num, i).value for i in range(2, ws.max_column + 1)]
+	it = iter(f.readlines())
+	lessons_and_links = {x.rstrip("\n"):next(it).rstrip("\n") for x in it}
 
-    for index, lesson_time in enumerate(time_row):
-        time_now = time.strftime("%H:%M")
-        if(time_now <= lesson_time):
-            lesson_next = lesson_row[index]
-            print(f"Sıradaki ders {lesson_next}, başlangıç saati {lesson_time}")
-            while True:
-                time.sleep(10)
-                if(time.strftime("%H:%M") == lesson_time):
-                    print(f"Kasıtlı bekleme süresi başlatılıyor ->{wait_time_count} saniye")
-                    time.sleep(int(wait_time_count))
-                    print(f"{lesson_next} dersine giriş yapılıyor...")
-                    webbrowser.open_new_tab(lessons_and_links[lesson_next])
-                    time.sleep(60)
-                    break
-    print("Bu günlük programınız bitmiştir, çıkmak için 'ENTER'a basın.")
-    input()
-except:
-    print("Bu günlük programınız boş gözükmekte, çıkmak için 'ENTER'a basın.")
-    input()
+	time_row = [ws.cell(time_row_num, i).value for i in range(2, ws.max_column + 1)]
+	if(time_row.count(None) == len(time_row)):
+		print("Bugünlük dersiniz yok.")
+	lesson_row = [ws.cell(lesson_row_num, i).value for i in range(2, ws.max_column + 1)]
+
+	for index, lesson_time in enumerate(time_row):
+		time_now = time.strftime("%H:%M")
+		try:
+			if(type(lesson_time) == None):
+				raise AttributeError("""Bugüne ait tanımlamadığınız ders yada dersler var, bu kabul edilemez arada boş ders derscik bırakmadan dersleri yazdığınızdan emin olun.\n
+				Bu hata bazende excel dosyanızdaki bugünün olduğu satırda yanlışlıkla doldurup sonra sildiğinizi sandığınız bir ders yüzünden olabilir, 
+				emin olmak için boş gözüken o yerin ait olduğu column a sağ tık->sil diyin.""")
+			if(str(type(lesson_time)) !=  "<class 'datetime.time'>"):
+				raise AttributeError(f"{type(lesson_time)}: saatin yazması gereken yere saat dışında bir değer girdiğinizi tespit ettik. Nütfen kontrol edin")
+			if(time_now <= lesson_time.strftime("%H:%M")):
+				lesson_next = lesson_row[index]
+				print(f"Sıradaki ders {lesson_next}, başlangıç saati {lesson_time.strftime("%H:%M")}")
+				while True:
+					time.sleep(10)
+					if(time.strftime("%H:%M") == lesson_time):
+						print(f"Kasıtlı bekleme süresi başlatılıyor ->{wait_time_count} saniye")
+						time.sleep(int(wait_time_count))
+						print(f"{lesson_next} dersine giriş yapılıyor...")
+						webbrowser.open_new_tab(lessons_and_links[lesson_next])
+						time.sleep(60)
+						break
+		except AttributeError as e:
+			print(e)
+			input()
+			exit()
