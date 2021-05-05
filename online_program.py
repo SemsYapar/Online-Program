@@ -25,20 +25,21 @@ with open("ders_link.txt", "r", encoding="utf-8") as f:
 	time_row = [ws.cell(time_row_num, i).value for i in range(2, ws.max_column + 1)]
 	if(time_row.count(None) == len(time_row)):
 		print("Bugünlük dersiniz yok.")
+		input()
+		exit()
 	lesson_row = [ws.cell(lesson_row_num, i).value for i in range(2, ws.max_column + 1)]
 
 	for index, lesson_time in enumerate(time_row):
 		time_now = time.strftime("%H:%M")
 		try:
-			if(type(lesson_time) == None):
-				raise AttributeError("""Bugüne ait tanımlamadığınız ders yada dersler var, bu kabul edilemez arada boş ders derscik bırakmadan dersleri yazdığınızdan emin olun.\n
-				Bu hata bazende excel dosyanızdaki bugünün olduğu satırda yanlışlıkla doldurup sonra sildiğinizi sandığınız bir ders yüzünden olabilir, 
-				emin olmak için boş gözüken o yerin ait olduğu column a sağ tık->sil diyin.""")
+			if(lesson_time == None):
+				raise AttributeError("Bugüne ait tanımlamadığınız ders yada dersler var, bu kabul edilemez arada boş derscik bırakmadan dersleri yazdığınızdan emin olun.\nBu hata bazende excel dosyanızdaki bugünün olduğu satırda yanlışlıkla doldurup sonra sildiğinizi sandığınız bir ders yüzünden olabilir, emin olmak için boş gözüken o yerin ait olduğu column a sağ tık->sil diyin.")
 			if(str(type(lesson_time)) !=  "<class 'datetime.time'>"):
-				raise AttributeError(f"{type(lesson_time)}: saatin yazması gereken yere saat dışında bir değer girdiğinizi tespit ettik. Nütfen kontrol edin")
+				raise AttributeError(f"Saatin yazması gereken yere {type(lesson_time)} bir değer girdiğinizi tespit ettik. Nütfen kontrol edin")
 			if(time_now <= lesson_time.strftime("%H:%M")):
 				lesson_next = lesson_row[index]
-				print(f"Sıradaki ders {lesson_next}, başlangıç saati {lesson_time.strftime("%H:%M")}")
+				start_lesson_time = lesson_time.strftime("%H:%M")
+				print(f"Sıradaki ders {lesson_next}, başlangıç saati {start_lesson_time}")
 				while True:
 					time.sleep(10)
 					if(time.strftime("%H:%M") == lesson_time):
@@ -52,3 +53,4 @@ with open("ders_link.txt", "r", encoding="utf-8") as f:
 			print(e)
 			input()
 			exit()
+	print("Bugünlük dersler bitti.")
