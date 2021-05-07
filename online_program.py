@@ -35,7 +35,7 @@ with open("ders_link.txt", "r", encoding="utf-8") as f:
 			if(lesson_time == None):
 				raise AttributeError("Bugüne ait tanımlamadığınız ders yada dersler var, bu kabul edilemez arada boş derscik bırakmadan dersleri yazdığınızdan emin olun.\nBu hata bazende excel dosyanızdaki bugünün olduğu satırda yanlışlıkla doldurup sonra sildiğinizi sandığınız bir ders yüzünden olabilir, emin olmak için boş gözüken o yerin ait olduğu column a sağ tık->sil diyin.")
 			if(str(type(lesson_time)) !=  "<class 'datetime.time'>"):
-				raise AttributeError(f"Saatin yazması gereken yere {type(lesson_time)} bir değer girdiğinizi tespit ettik. Nütfen kontrol edin")
+				raise AttributeError(f"Saat yazmanız gereken yere {type(lesson_time)} bir değer girdiğinizi tespit ettik. Nütfen kontrol edin")
 			if(time_now <= lesson_time.strftime("%H:%M")):
 				lesson_next = lesson_row[index]
 				start_lesson_time = lesson_time.strftime("%H:%M")
@@ -43,14 +43,16 @@ with open("ders_link.txt", "r", encoding="utf-8") as f:
 				while True:
 					time.sleep(10)
 					if(time.strftime("%H:%M") == lesson_time):
+						if(lessons_and_links[lesson_next].lower() == "empty"):
+							print(f"{lesson_next} dersini 'boş' olarak işaretlediğinizden dolayı ders pas geçildi.")
+							break
 						print(f"Kasıtlı bekleme süresi başlatılıyor ->{wait_time_count} saniye")
 						time.sleep(int(wait_time_count))
 						print(f"{lesson_next} dersine giriş yapılıyor...")
 						webbrowser.open_new_tab(lessons_and_links[lesson_next])
 						time.sleep(60)
 						break
-		except AttributeError as e:
+		except AttributeError as e:  
 			print(e)
-			input()
 			exit()
 	print("Bugünlük dersler bitti.")
