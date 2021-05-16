@@ -21,6 +21,7 @@ lesson_row_num = time_row_num + 1
 with open("ders_link.txt", "r", encoding="utf-8") as f:
     it = iter(f.readlines())
     
+ try:   
 lessons_and_links = {x.rstrip("\n"):next(it).rstrip("\n") for x in it}
 
 
