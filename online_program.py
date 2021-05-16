@@ -1,4 +1,4 @@
-﻿#Şahzı muhterem Sems tarafından bizzat kodlanmıştır, /comprehension pornosu/
+#Şahzı muhterem Sems tarafından bizzat kodlanmıştır, /comprehension pornosu/
 
 from openpyxl import load_workbook
 import time
@@ -15,51 +15,55 @@ ws = wb.active
 today = time.strftime("%A")
 
 days_and_rows = {"Monday":1,"Tuesday":3,"Wednesday":5,"Thursday":7,"Friday":9,"Saturday":11,"Sunday":13}
-time_row_num = days_and_rows[today]
+time_row_num = 9
 lesson_row_num = time_row_num + 1
 
 with open("ders_link.txt", "r", encoding="utf-8") as f:
-	it = iter(f.readlines())
-	lessons_and_links = {x.rstrip("\n"):next(it).rstrip("\n") for x in it}
+    it = iter(f.readlines())
+    
+lessons_and_links = {x.rstrip("\n"):next(it).rstrip("\n") for x in it}
 
-time_row = [ws.cell(time_row_num, i).value for i in range(2, ws.max_column + 1)]
-if time_row.count(None) == len(time_row):
-	print("Bugünlük dersiniz yok.")
-	input()
-	exit()
-lesson_row = [ws.cell(lesson_row_num, i).value for i in range(2, ws.max_column + 1)]
+
+time_row = []
+lesson_row = []
+for column_num in range(2, ws.max_column + 1):
+    if ws.cell(time_row_num, column_num).value == None:
+        if ws.cell(lesson_row_num, column_num).value != None:
+            print(f"UYARI: Bugünkü derslerinizden {column_num - 1}. ders için bir saat belirtilmemiş, {column_num - 1}. saatteki {ws.cell(lesson_row_num, column_num).value} dersi göz ardı edilicek")
+        continue
+    time_row.append(ws.cell(time_row_num, column_num).value)
+    lesson_row.append(ws.cell(lesson_row_num, column_num).value)
+        
+if len(time_row) == 0:
+    print("Bugünlük dersiniz yok.")
+    input()
+    exit()
 
 for index, lesson_time in enumerate(time_row):
-	time_now = time.strftime("%H:%M")
-	try:
-		if lesson_time == None:
-			raise AttributeError("Bugüne ait tanımlamadığınız ders yada dersler var, bu kabul edilemez arada boş derscik bırakmadan dersleri yazdığınızdan emin olun.\nBu hata bazende excel dosyanızdaki bugünün olduğu satırda yanlışlıkla doldurup sonra sildiğinizi sandığınız bir ders yüzünden olabilir, emin olmak için boş gözüken o yerin ait olduğu column a sağ tık->sil diyin.")
-		if str(type(lesson_time)) !=  "<class 'datetime.time'>":
-			raise AttributeError(f"Saat yazmanız gereken yere '{type(lesson_time)}' türünden bir değer girdiğinizi tespit ettik. Nütfen kontrol edin")
-		else:
-			lesson_time = lesson_time.strftime("%H:%M")
-		if time_now <= lesson_time:
-			lesson_next = lesson_row[index]
-			print(f"Sıradaki ders {lesson_next}, başlangıç saati {lesson_time}")
-			while True:
-				if time.strftime("%H:%M") == lesson_time:
-					if lesson_next not in lessons_and_links:# bu dözgün çalışmıyor
-						raise KeyError(f"Sıradaki ders '{lesson_next}', ders_link.txt'ye kayıtlı değil")
-					if(lessons_and_links[lesson_next].lower() == "empty"):
-						print(f"'{lesson_next}' dersini 'boş' olarak işaretlediğinizden dolayı ders pas geçildi.")
-						break
-					print("lol")
-					print(f"Kasıtlı bekleme süresi başlatılıyor ->{wait_time_count} saniye")
-					time.sleep(int(wait_time_count))
-					print(f"{lesson_next} dersine giriş yapılıyor...")
-					webbrowser.open_new_tab(lessons_and_links[lesson_next])
-					time.sleep(60)
-					break
-				time.sleep(10)
-	except AttributeError as e: 
-		print(e)
-		exit()
-	except KeyError as e:
-		print(e)
-		exit()
+    time_now = time.strftime("%H:%M")
+    try:
+        lesson_time = lesson_time.strftime("%H:%M")
+    except AttributeError:
+        print(f"HATA: Ders saatini yazmanız gereken yere {type(lesson_time)} türünden bir değer girdiğinizi tespit ettik. Lütfen kontrol edin")
+        exit()
+    if time_now <= lesson_time:
+        lesson_next = lesson_row[index]
+        print(lesson_next)
+        print(f"Sıradaki ders {lesson_next}, başlangıç saati {lesson_time}")
+        while True:
+            if time.strftime("%H:%M") == lesson_time:
+                try:
+                    if(lessons_and_links[lesson_next].lower() == "empty"):
+                        print(f"'{lesson_next}' dersini 'empty' olarak işaretlediğinizden dolayı ders pas geçildi.")
+                        break
+                except KeyError:
+                    print(f"HATA: Sıradaki ders '{lesson_next}', ders_link.txt'ye kayıtlı değil")
+                    exit()
+                print(f"Kasıtlı bekleme süresi başlatılıyor ->{wait_time_count} saniye")
+                time.sleep(int(wait_time_count))
+                print(f"{lesson_next} dersine giriş yapılıyor...")
+                webbrowser.open_new_tab(lessons_and_links[lesson_next])
+                time.sleep(60)
+                break
+            time.sleep(10)
 print("Bugünlük dersler bitti.")
