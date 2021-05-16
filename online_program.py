@@ -56,8 +56,8 @@ for index, lesson_time in enumerate(time_row):
         while True:
             if time.strftime("%H:%M") == lesson_time:
                 try:
-                    if(lessons_and_links[lesson_next].lower() == "empty"):
-                        print(f"'{lesson_next}' dersini 'empty' olarak işaretlediğinizden dolayı ders pas geçildi.")
+                    if(lessons_and_links[lesson_next].lower() == "boş"):
+                        print(f"'{lesson_next}' dersini 'boş' olarak işaretlediğinizden dolayı ders pas geçildi.")
                         break
                 except KeyError:
                     print(f"HATA: Sıradaki ders '{lesson_next}', ders_link.txt'ye kayıtlı değil")
