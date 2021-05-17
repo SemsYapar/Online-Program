@@ -15,7 +15,7 @@ ws = wb.active
 today = time.strftime("%A")
 
 days_and_rows = {"Monday":1,"Tuesday":3,"Wednesday":5,"Thursday":7,"Friday":9,"Saturday":11,"Sunday":13}
-time_row_num = 9
+time_row_num = days_and_rows[today]
 lesson_row_num = time_row_num + 1
 
 with open("ders_link.txt", "r", encoding="utf-8") as f:
